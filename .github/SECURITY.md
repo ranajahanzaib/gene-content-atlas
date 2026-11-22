@@ -2,8 +2,8 @@
 
 ## Reporting a Vulnerability
 
-Please do not report security vulnerabilities through public GitHub issues.
+Do not report security vulnerabilities through public GitHub issues.
 
-Instead, report them via GitHub's private [Security Advisories](../../security/advisories/new) feature. Include as much detail as possible: a description of the issue, steps to reproduce, and potential impact.
+Submit a private report through [GitHub Security Advisories](https://github.com/ranajahanzaib/gene-content-atlas/security/advisories/new). Include the affected version or commit, impact, and steps to reproduce. Avoid including credentials or unrelated personal data.
 
-You can expect an acknowledgment within 48 hours and a resolution timeline once the issue is confirmed.
+Reports are reviewed by the project maintainers. Response and remediation times depend on severity and maintainer availability; no response-time guarantee is provided.

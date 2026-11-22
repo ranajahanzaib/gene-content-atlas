@@ -1,46 +1,28 @@
-## Contributing
+# Contributing
 
-We welcome contributions of all kinds to improve this project! Here's how you can get involved:
+Bug reports, documentation improvements, and code contributions are welcome. For larger changes, open an issue first to agree on scope.
 
-1. **Fork the Repository**: Start by forking the repository to your GitHub account.
+## Development setup
 
-2. **Clone Your Fork**: Clone the forked repository to your local machine:
+Requirements: Python 3.10 or newer and Node.js 20 or newer. The demo and test suite do not require Python packages or network access.
 
-   ```bash
-   git clone <repo_url>
-   cd repo_dir
-   ```
+```sh
+git clone https://github.com/ranajahanzaib/gene-content-atlas.git
+cd gene-content-atlas
+make setup
+make test
+make build
+```
 
-3. **Create a Branch**: Create a new branch for your feature or bug fix:
+To run the app locally, use `make dev` and open the URL printed by the server. Press Ctrl+C to stop it. Real-data acquisition and Panaroo analysis require the external tools described in the README.
 
-   ```bash
-   git checkout -b feature-name
-   ```
+## Changes and pull requests
 
-4. **Make Changes**: Make your changes to the codebase. Be sure to follow existing code style and conventions.
+- Keep changes focused and describe user-visible behavior in the pull request.
+- Add or update tests for behavior changes.
+- Run `make test`, `make build`, and `node --check apps/web/app.js` before submitting.
+- Document scientific assumptions, data sources, and limitations when analysis behavior changes.
+- Use clear [Conventional Commit](https://www.conventionalcommits.org/) messages.
+- Do not commit credentials, `.env` files, downloaded genome packages, or generated analysis directories.
 
-5. **Commit Changes**: Commit your changes with a clear and descriptive message:
-
-   ```bash
-   git commit -m "Add detailed description of the changes"
-   ```
-
-6. **Push Changes**: Push your changes to your fork:
-
-   ```bash
-   git push origin feature-name
-   ```
-
-7. **Submit a Pull Request**: Open a pull request from your branch to the main repository's branch. Include a detailed description of your changes and the problem they solve.
-
-8. **Review and Feedback**: Participate in the review process. Make any requested changes, and your contribution will be merged!
-
-### Guidelines
-
-- Ensure your code follows the existing style and conventions.
-- Include tests for any new functionality or bug fixes.
-- Write clear, concise commit messages and pull request descriptions.
-
-### Issues
-
-Feel free to report bugs or suggest enhancements by creating an issue. Be sure to include detailed information about the problem and, if possible, steps to reproduce it.
+Pull requests should explain the problem, the approach, and any validation that was not possible locally.

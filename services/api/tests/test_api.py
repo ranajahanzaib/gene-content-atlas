@@ -130,6 +130,81 @@ class DemoDataTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 safe_extract(package, base / "out")
 
+    def test_api_get_routes_and_exports(self):
+        from app import load_data
+        routes = [
+            ("/api/health", 200, "application/json"),
+            ("/api/datasets", 200, "application/json"),
+            ("/api/overview?dataset=demo-lp-v1", 200, "application/json"),
+            ("/api/matrix?dataset=demo-lp-v1", 200, "application/json"),
+            ("/api/strains?dataset=demo-lp-v1", 200, "application/json"),
+            ("/api/families?dataset=demo-lp-v1", 200, "application/json"),
+            ("/api/similarity?dataset=demo-lp-v1", 200, "application/json"),
+            ("/api/tree?dataset=demo-lp-v1", 200, "application/json"),
+            ("/api/statistics?dataset=demo-lp-v1&genomes=", 200, "application/json"),
+            ("/api/statistics?dataset=demo-lp-v1&genomes=LP-01,LP-02", 200, "application/json"),
+            ("/api/export/families.tsv?dataset=demo-lp-v1", 200, "text/tab-separated-values"),
+            ("/api/export/families.csv?dataset=demo-lp-v1", 200, "text/csv"),
+            ("/api/export/tree.newick?dataset=demo-lp-v1", 200, "text/plain"),
+            ("/api/overview?dataset=nonexistent-dataset", 404, "application/json"),
+            ("/", 200, "text/html"),
+            ("/styles.css", 200, "text/css"),
+            ("/app.js", 200, "application/javascript"),
+        ]
+        for path, expected_status, expected_mime in routes:
+            handler = object.__new__(Handler)
+            handler.path = path
+            headers = {}
+            status_holder = []
+            handler.send_response = lambda s: status_holder.append(s)
+            handler.send_header = lambda name, value: headers.__setitem__(name, value)
+            handler.end_headers = lambda: None
+            handler.wfile = io.BytesIO()
+            handler.do_GET()
+            self.assertEqual(status_holder[0], expected_status, f"Route {path} returned status {status_holder[0]}, expected {expected_status}")
+            self.assertIn(expected_mime, headers["Content-Type"])
+
+    def test_api_post_compare(self):
+        handler = object.__new__(Handler)
+        handler.path = "/api/compare"
+        payload = json.dumps({"genome_ids": ["LP-01", "LP-02"], "dataset_id": "demo-lp-v1"}).encode()
+        headers = {}
+        status_holder = []
+        handler.headers = {"Content-Length": str(len(payload))}
+        handler.rfile = io.BytesIO(payload)
+        handler.send_response = lambda s: status_holder.append(s)
+        handler.send_header = lambda name, value: headers.__setitem__(name, value)
+        handler.end_headers = lambda: None
+        handler.wfile = io.BytesIO()
+        handler.do_POST()
+        self.assertEqual(status_holder[0], 200)
+        resp = json.loads(handler.wfile.getvalue())
+        self.assertEqual(resp["genomes"], ["LP-01", "LP-02"])
+
+        # Invalid genome count (< 2)
+        status_holder.clear()
+        bad_payload = json.dumps({"genome_ids": ["LP-01"]}).encode()
+        handler.headers = {"Content-Length": str(len(bad_payload))}
+        handler.rfile = io.BytesIO(bad_payload)
+        handler.wfile = io.BytesIO()
+        handler.do_POST()
+        self.assertEqual(status_holder[0], 400)
+
+        # Invalid path
+        status_holder.clear()
+        handler.path = "/api/other"
+        handler.do_POST()
+        self.assertEqual(status_holder[0], 404)
+
+    def test_real_refseq_panaroo_dataset_loading(self):
+        from app import load_data, REAL_DATA
+        if REAL_DATA.is_file():
+            data = derive(load_data("real-lp-refseq-panaroo"))
+            self.assertEqual(data["dataset"]["id"], "real-lp-refseq-panaroo")
+            self.assertEqual(len(data["strains"]), 20)
+            self.assertEqual(len(data["families"]), 5488)
+            self.assertEqual(sum(data["counts"].values()), 5488)
+
 
 if __name__ == "__main__":
     unittest.main()

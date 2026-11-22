@@ -3,7 +3,7 @@ HOST ?= 127.0.0.1
 PORT ?= 8000
 export PANAROO_TIMEOUT_SECONDS ?= 86400
 
-.PHONY: setup dev doctor seed-demo ingest-real analyze test lint build
+.PHONY: setup dev doctor seed-demo ingest-real analyze test lint build screenshots
 setup:
 	$(PYTHON) --version
 
@@ -31,3 +31,6 @@ lint:
 
 build: lint
 	@echo "Build checks passed. Static web assets are ready."
+
+screenshots:
+	@$(PYTHON) scripts/capture_screenshots.py

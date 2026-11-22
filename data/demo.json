@@ -1,0 +1,2180 @@
+{
+  "dataset": {
+    "id": "demo-lp-v1",
+    "name": "Lactiplantibacillus plantarum",
+    "label": "ILLUSTRATIVE DEMO \u00b7 SYNTHETIC DATA",
+    "mode": "demo",
+    "seed": 20261122,
+    "source": "Deterministic local fixture; no biological conclusions are represented."
+  },
+  "strains": [
+    {
+      "id": "LP-01",
+      "name": "L. plantarum demo 01",
+      "source": "plant"
+    },
+    {
+      "id": "LP-02",
+      "name": "L. plantarum demo 02",
+      "source": "fermentation"
+    },
+    {
+      "id": "LP-03",
+      "name": "L. plantarum demo 03",
+      "source": "dairy"
+    },
+    {
+      "id": "LP-04",
+      "name": "L. plantarum demo 04",
+      "source": "plant"
+    },
+    {
+      "id": "LP-05",
+      "name": "L. plantarum demo 05",
+      "source": "fermentation"
+    },
+    {
+      "id": "LP-06",
+      "name": "L. plantarum demo 06",
+      "source": "dairy"
+    },
+    {
+      "id": "LP-07",
+      "name": "L. plantarum demo 07",
+      "source": "plant"
+    },
+    {
+      "id": "LP-08",
+      "name": "L. plantarum demo 08",
+      "source": "fermentation"
+    },
+    {
+      "id": "LP-09",
+      "name": "L. plantarum demo 09",
+      "source": "dairy"
+    },
+    {
+      "id": "LP-10",
+      "name": "L. plantarum demo 10",
+      "source": "plant"
+    },
+    {
+      "id": "LP-11",
+      "name": "L. plantarum demo 11",
+      "source": "fermentation"
+    },
+    {
+      "id": "LP-12",
+      "name": "L. plantarum demo 12",
+      "source": "dairy"
+    }
+  ],
+  "families": [
+    {
+      "id": "GF0001",
+      "label": "Family 001",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 7919
+    },
+    {
+      "id": "GF0002",
+      "label": "Family 002",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 2,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 71463
+    },
+    {
+      "id": "GF0003",
+      "label": "Family 003",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 115007
+    },
+    {
+      "id": "GF0004",
+      "label": "Family 004",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 2,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 178551
+    },
+    {
+      "id": "GF0005",
+      "label": "Family 005",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 242095
+    },
+    {
+      "id": "GF0006",
+      "label": "Family 006",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 2,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 285639
+    },
+    {
+      "id": "GF0007",
+      "label": "Family 007",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 349183
+    },
+    {
+      "id": "GF0008",
+      "label": "Family 008",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 2,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 392727
+    },
+    {
+      "id": "GF0009",
+      "label": "Family 009",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 456271
+    },
+    {
+      "id": "GF0010",
+      "label": "Family 010",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 2,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 519815
+    },
+    {
+      "id": "GF0011",
+      "label": "Family 011",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 563359
+    },
+    {
+      "id": "GF0012",
+      "label": "Family 012",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 2,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 626903
+    },
+    {
+      "id": "GF0013",
+      "label": "Family 013",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 670447
+    },
+    {
+      "id": "GF0014",
+      "label": "Family 014",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 2,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 733991
+    },
+    {
+      "id": "GF0015",
+      "label": "Family 015",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 797535
+    },
+    {
+      "id": "GF0016",
+      "label": "Family 016",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 2,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 841079
+    },
+    {
+      "id": "GF0017",
+      "label": "Family 017",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 904623
+    },
+    {
+      "id": "GF0018",
+      "label": "Family 018",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 2,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 948167
+    },
+    {
+      "id": "GF0019",
+      "label": "Family 019",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1011711
+    },
+    {
+      "id": "GF0020",
+      "label": "Family 020",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 2,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1075255
+    },
+    {
+      "id": "GF0021",
+      "label": "Family 021",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1118799
+    },
+    {
+      "id": "GF0022",
+      "label": "Family 022",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 2
+      },
+      "group": "core",
+      "position": 1182343
+    },
+    {
+      "id": "GF0023",
+      "label": "Family 023",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1225887
+    },
+    {
+      "id": "GF0024",
+      "label": "Family 024",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1289431
+    },
+    {
+      "id": "GF0025",
+      "label": "Family 025",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1352975
+    },
+    {
+      "id": "GF0026",
+      "label": "Family 026",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1396519
+    },
+    {
+      "id": "GF0027",
+      "label": "Family 027",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1460063
+    },
+    {
+      "id": "GF0028",
+      "label": "Family 028",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1503607
+    },
+    {
+      "id": "GF0029",
+      "label": "Family 029",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 2,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1567151
+    },
+    {
+      "id": "GF0030",
+      "label": "Family 030",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1630695
+    },
+    {
+      "id": "GF0031",
+      "label": "Family 031",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 2,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1674239
+    },
+    {
+      "id": "GF0032",
+      "label": "Family 032",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1737783
+    },
+    {
+      "id": "GF0033",
+      "label": "Family 033",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 2,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1781327
+    },
+    {
+      "id": "GF0034",
+      "label": "Family 034",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1844871
+    },
+    {
+      "id": "GF0035",
+      "label": "Family 035",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 2,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1908415
+    },
+    {
+      "id": "GF0036",
+      "label": "Family 036",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 1951959
+    },
+    {
+      "id": "GF0037",
+      "label": "Family 037",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 2,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 2015503
+    },
+    {
+      "id": "GF0038",
+      "label": "Family 038",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "core",
+      "position": 2059047
+    },
+    {
+      "id": "GF0039",
+      "label": "Family 039",
+      "members": [
+        "LP-01",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 2,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1
+      },
+      "group": "accessory",
+      "position": 2122591
+    },
+    {
+      "id": "GF0040",
+      "label": "Family 040",
+      "members": [
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2186135
+    },
+    {
+      "id": "GF0041",
+      "label": "Family 041",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-06": 1,
+        "LP-07": 2,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2229679
+    },
+    {
+      "id": "GF0042",
+      "label": "Family 042",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2293223
+    },
+    {
+      "id": "GF0043",
+      "label": "Family 043",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2336767
+    },
+    {
+      "id": "GF0044",
+      "label": "Family 044",
+      "members": [
+        "LP-01",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1
+      },
+      "group": "accessory",
+      "position": 2400311
+    },
+    {
+      "id": "GF0045",
+      "label": "Family 045",
+      "members": [
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 2,
+        "LP-10": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2463855
+    },
+    {
+      "id": "GF0046",
+      "label": "Family 046",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2507399
+    },
+    {
+      "id": "GF0047",
+      "label": "Family 047",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-10": 2,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2570943
+    },
+    {
+      "id": "GF0048",
+      "label": "Family 048",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-09",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2614487
+    },
+    {
+      "id": "GF0049",
+      "label": "Family 049",
+      "members": [
+        "LP-01",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-06",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-11"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-11": 2
+      },
+      "group": "accessory",
+      "position": 2678031
+    },
+    {
+      "id": "GF0050",
+      "label": "Family 050",
+      "members": [
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-05",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-10",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-05": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-10": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2741575
+    },
+    {
+      "id": "GF0051",
+      "label": "Family 051",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-04",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-09",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-04": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-09": 1,
+        "LP-11": 1,
+        "LP-12": 2
+      },
+      "group": "accessory",
+      "position": 2785119
+    },
+    {
+      "id": "GF0052",
+      "label": "Family 052",
+      "members": [
+        "LP-01",
+        "LP-02",
+        "LP-03",
+        "LP-05",
+        "LP-06",
+        "LP-07",
+        "LP-08",
+        "LP-10",
+        "LP-11",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-02": 1,
+        "LP-03": 1,
+        "LP-05": 1,
+        "LP-06": 1,
+        "LP-07": 1,
+        "LP-08": 1,
+        "LP-10": 1,
+        "LP-11": 1,
+        "LP-12": 1
+      },
+      "group": "accessory",
+      "position": 2848663
+    },
+    {
+      "id": "GF0053",
+      "label": "Family 053",
+      "members": [
+        "LP-02",
+        "LP-06",
+        "LP-10"
+      ],
+      "copies": {
+        "LP-02": 1,
+        "LP-06": 1,
+        "LP-10": 1
+      },
+      "group": "rare",
+      "position": 2912207
+    },
+    {
+      "id": "GF0054",
+      "label": "Family 054",
+      "members": [
+        "LP-03",
+        "LP-07",
+        "LP-11"
+      ],
+      "copies": {
+        "LP-03": 1,
+        "LP-07": 1,
+        "LP-11": 1
+      },
+      "group": "rare",
+      "position": 2955751
+    },
+    {
+      "id": "GF0055",
+      "label": "Family 055",
+      "members": [
+        "LP-04",
+        "LP-08",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-04": 1,
+        "LP-08": 1,
+        "LP-12": 1
+      },
+      "group": "rare",
+      "position": 3019295
+    },
+    {
+      "id": "GF0056",
+      "label": "Family 056",
+      "members": [
+        "LP-01",
+        "LP-05",
+        "LP-09"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-05": 1,
+        "LP-09": 1
+      },
+      "group": "rare",
+      "position": 3062839
+    },
+    {
+      "id": "GF0057",
+      "label": "Family 057",
+      "members": [
+        "LP-02",
+        "LP-06",
+        "LP-10"
+      ],
+      "copies": {
+        "LP-02": 1,
+        "LP-06": 1,
+        "LP-10": 1
+      },
+      "group": "rare",
+      "position": 3126383
+    },
+    {
+      "id": "GF0058",
+      "label": "Family 058",
+      "members": [
+        "LP-03",
+        "LP-07",
+        "LP-11"
+      ],
+      "copies": {
+        "LP-03": 1,
+        "LP-07": 1,
+        "LP-11": 1
+      },
+      "group": "rare",
+      "position": 3189927
+    },
+    {
+      "id": "GF0059",
+      "label": "Family 059",
+      "members": [
+        "LP-04",
+        "LP-08",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-04": 1,
+        "LP-08": 1,
+        "LP-12": 1
+      },
+      "group": "rare",
+      "position": 3233471
+    },
+    {
+      "id": "GF0060",
+      "label": "Family 060",
+      "members": [
+        "LP-01",
+        "LP-05",
+        "LP-09"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-05": 1,
+        "LP-09": 1
+      },
+      "group": "rare",
+      "position": 3297015
+    },
+    {
+      "id": "GF0061",
+      "label": "Family 061",
+      "members": [
+        "LP-02",
+        "LP-06",
+        "LP-10"
+      ],
+      "copies": {
+        "LP-02": 1,
+        "LP-06": 1,
+        "LP-10": 1
+      },
+      "group": "rare",
+      "position": 3340559
+    },
+    {
+      "id": "GF0062",
+      "label": "Family 062",
+      "members": [
+        "LP-03",
+        "LP-07",
+        "LP-11"
+      ],
+      "copies": {
+        "LP-03": 2,
+        "LP-07": 1,
+        "LP-11": 1
+      },
+      "group": "rare",
+      "position": 3404103
+    },
+    {
+      "id": "GF0063",
+      "label": "Family 063",
+      "members": [
+        "LP-04",
+        "LP-08",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-04": 1,
+        "LP-08": 1,
+        "LP-12": 1
+      },
+      "group": "rare",
+      "position": 3467647
+    },
+    {
+      "id": "GF0064",
+      "label": "Family 064",
+      "members": [
+        "LP-01",
+        "LP-05",
+        "LP-09"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-05": 1,
+        "LP-09": 1
+      },
+      "group": "rare",
+      "position": 3511191
+    },
+    {
+      "id": "GF0065",
+      "label": "Family 065",
+      "members": [
+        "LP-02",
+        "LP-06",
+        "LP-10"
+      ],
+      "copies": {
+        "LP-02": 1,
+        "LP-06": 1,
+        "LP-10": 1
+      },
+      "group": "rare",
+      "position": 3574735
+    },
+    {
+      "id": "GF0066",
+      "label": "Family 066",
+      "members": [
+        "LP-03",
+        "LP-07",
+        "LP-11"
+      ],
+      "copies": {
+        "LP-03": 1,
+        "LP-07": 1,
+        "LP-11": 1
+      },
+      "group": "rare",
+      "position": 3618279
+    },
+    {
+      "id": "GF0067",
+      "label": "Family 067",
+      "members": [
+        "LP-04",
+        "LP-08",
+        "LP-12"
+      ],
+      "copies": {
+        "LP-04": 1,
+        "LP-08": 1,
+        "LP-12": 1
+      },
+      "group": "rare",
+      "position": 3681823
+    },
+    {
+      "id": "GF0068",
+      "label": "Family 068",
+      "members": [
+        "LP-01",
+        "LP-05",
+        "LP-09"
+      ],
+      "copies": {
+        "LP-01": 1,
+        "LP-05": 1,
+        "LP-09": 1
+      },
+      "group": "rare",
+      "position": 3745367
+    },
+    {
+      "id": "GF0069",
+      "label": "Family 069",
+      "members": [
+        "LP-04"
+      ],
+      "copies": {
+        "LP-04": 1
+      },
+      "group": "singleton",
+      "position": 3788911
+    },
+    {
+      "id": "GF0070",
+      "label": "Family 070",
+      "members": [
+        "LP-11"
+      ],
+      "copies": {
+        "LP-11": 1
+      },
+      "group": "singleton",
+      "position": 3852455
+    },
+    {
+      "id": "GF0071",
+      "label": "Family 071",
+      "members": [
+        "LP-06"
+      ],
+      "copies": {
+        "LP-06": 1
+      },
+      "group": "singleton",
+      "position": 3895999
+    },
+    {
+      "id": "GF0072",
+      "label": "Family 072",
+      "members": [
+        "LP-01"
+      ],
+      "copies": {
+        "LP-01": 1
+      },
+      "group": "singleton",
+      "position": 3959543
+    },
+    {
+      "id": "GF0073",
+      "label": "Family 073",
+      "members": [
+        "LP-08"
+      ],
+      "copies": {
+        "LP-08": 1
+      },
+      "group": "singleton",
+      "position": 4023087
+    },
+    {
+      "id": "GF0074",
+      "label": "Family 074",
+      "members": [
+        "LP-03"
+      ],
+      "copies": {
+        "LP-03": 1
+      },
+      "group": "singleton",
+      "position": 4066631
+    },
+    {
+      "id": "GF0075",
+      "label": "Family 075",
+      "members": [
+        "LP-10"
+      ],
+      "copies": {
+        "LP-10": 1
+      },
+      "group": "singleton",
+      "position": 4130175
+    },
+    {
+      "id": "GF0076",
+      "label": "Family 076",
+      "members": [
+        "LP-05"
+      ],
+      "copies": {
+        "LP-05": 1
+      },
+      "group": "singleton",
+      "position": 4173719
+    },
+    {
+      "id": "GF0077",
+      "label": "Family 077",
+      "members": [
+        "LP-12"
+      ],
+      "copies": {
+        "LP-12": 1
+      },
+      "group": "singleton",
+      "position": 4237263
+    },
+    {
+      "id": "GF0078",
+      "label": "Family 078",
+      "members": [
+        "LP-07"
+      ],
+      "copies": {
+        "LP-07": 1
+      },
+      "group": "singleton",
+      "position": 4300807
+    },
+    {
+      "id": "GF0079",
+      "label": "Family 079",
+      "members": [
+        "LP-02"
+      ],
+      "copies": {
+        "LP-02": 1
+      },
+      "group": "singleton",
+      "position": 4344351
+    },
+    {
+      "id": "GF0080",
+      "label": "Family 080",
+      "members": [
+        "LP-09"
+      ],
+      "copies": {
+        "LP-09": 1
+      },
+      "group": "singleton",
+      "position": 4407895
+    }
+  ],
+  "genome_length": 4450000,
+  "methods": {
+    "prevalence": "Distinct genomes containing a family / genomes in the selected dataset.",
+    "distance": "1 \u2212 Jaccard similarity of family presence sets; copy number is not used.",
+    "tree": "UPGMA clustering of the demo presence/absence Jaccard distances; illustrative only."
+  }
+}

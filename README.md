@@ -1,103 +1,298 @@
 # Gene Content Atlas
 
-**Explore the genomic diversity within a species.**
+**Explore genomic diversity and gene-family distribution within a bacterial species.**
 
-Gene Content Atlas is a local comparative genomics workspace. Its deterministic demo is ready to explore immediately. Optional real-data commands discover annotated RefSeq assemblies and run Panaroo when the required external tools and network access are available. The demo is always labeled synthetic and is never substituted for a missing real dataset.
+Gene Content Atlas is a local, dependency-free comparative genomics workspace and interactive exploration tool. It allows researchers and bioinformaticians to examine pangenome composition, inspect family-by-genome presence and copy-number variation, cluster strains by gene-content similarity, evaluate accumulation curves, and compare multi-genome cohorts.
 
-## Quick start
+![Gene Content Atlas Overview](docs/screenshots/overview-dark.png)
 
-Requirements: Python 3.10 or newer. The demo API and web client use only the Python standard library and browser JavaScript.
+The application includes both a deterministic, zero-setup synthetic demonstration cohort and an automated pipeline for acquiring public NCBI RefSeq assemblies and importing strict-mode Panaroo pangenome matrices. Synthetic demonstration data is always labeled and never substituted for biological findings.
+
+---
+
+## Key Features
+
+- **Interactive Presence / Absence Matrix:** Heatmap view of gene family distribution across strains with integer paralog copy counts, class filtering (Core, Accessory, Rare, Singleton), search, and family detail inspection.
+- **Gene-Content Clustering:** Hierarchical UPGMA dendrogram constructed from pairwise binary Jaccard distances with leaf selection and Newick export.
+- **Pangenome Statistics & Curves:** Real-time computation of the gene frequency spectrum, randomized genome-order accumulation curves, core-genome decay curves (with observed min/max ranges), and a pairwise Jaccard similarity matrix.
+- **Multi-Genome Comparison:** Select 2 to 8 genomes from the tree or catalogue to calculate exact shared family counts, family unions, and strain-specific family sets.
+- **Strain & Family Catalogues:** Tabular views of all cohort genomes and gene families with prevalence fractions, copy counts, assembly metadata, and filtering.
+- **Dual Dataset Support:** Instant toggle between the deterministic demo fixture and real RefSeq/Panaroo pangenome analyses.
+- **Transparent Provenance:** Clear visual distinction between gene-content clustering and sequence-based phylogeny; explicit scientific boundaries for unaligned loci and synteny.
+- **Dependency-Free Local API:** Backend server written entirely in Python standard library with zero external runtime dependencies.
+- **Export Formats:** Direct export of family matrices (TSV/CSV) and dendrograms (Newick syntax).
+
+---
+
+## Visual Tour
+
+### Gene Family Presence / Absence Matrix
+
+Search and filter thousands of gene families across the cohort. Selecting any row displays its exact prevalence, member genomes, and copy-number distribution in the inspection panel.
+
+![Presence / Absence Matrix](docs/screenshots/matrix.png)
+
+### Gene-Content Dendrogram (UPGMA Clustering)
+
+Hierarchical clustering based on binary gene-family presence/absence Jaccard distance. Selecting leaves links directly to matrix filtering and strain comparison.
+
+![Gene-Content Tree](docs/screenshots/tree.png)
+
+### Pangenome Statistics & Accumulation Curves
+
+Computed from 100 seeded permutations of genome sampling order, showing family accumulation, core decay, frequency spectrum, and Jaccard similarity.
+
+![Pangenome Statistics](docs/screenshots/statistics.png)
+
+### Multi-Genome Comparison
+
+Compare 2 to 8 genomes simultaneously to isolate core intersections, union sizes, strain-specific families, and pairwise Jaccard similarities.
+
+![Strain Comparison](docs/screenshots/compare.png)
+
+### Strain Catalogue & Genome Landscape
+
+Explore cohort strain provenance, assembly accessions, gene counts, contig counts, and coordinate marker tracks.
+
+|                 Strain Catalogue                  |                 Circular Coordinate Track                  |
+| :-----------------------------------------------: | :--------------------------------------------------------: |
+| ![Strain Catalogue](docs/screenshots/strains.png) | ![Genome Landscape](docs/screenshots/genome-landscape.png) |
+
+### Real RefSeq & Panaroo Analysis Mode
+
+Seamlessly load and explore real RefSeq assemblies processed by Panaroo (e.g., 20 _Lactiplantibacillus plantarum_ genomes comprising 5,488 gene families).
+
+|                       RefSeq Dataset Overview                        |                      RefSeq Panaroo Matrix                       |
+| :------------------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![Real Dataset Overview](docs/screenshots/real-dataset-overview.png) | ![Real Dataset Matrix](docs/screenshots/real-dataset-matrix.png) |
+
+### Dark Mode Experience
+
+Gene Content Atlas includes native dark mode support (toggled via the header icon, system preference, or `?theme=dark`), designed with high-contrast scientific color palettes for extended analysis sessions.
+
+|                 Overview (Dark Mode)                 |      Presence / Absence Matrix (Dark Mode)       |
+| :--------------------------------------------------: | :----------------------------------------------: |
+| ![Overview Dark](docs/screenshots/overview-dark.png) | ![Matrix Dark](docs/screenshots/matrix-dark.png) |
+
+|        Gene-Content Tree (Dark Mode)         |             Pangenome Statistics (Dark Mode)             |
+| :------------------------------------------: | :------------------------------------------------------: |
+| ![Tree Dark](docs/screenshots/tree-dark.png) | ![Statistics Dark](docs/screenshots/statistics-dark.png) |
+
+|          Multi-Genome Compare (Dark Mode)          |                       Real RefSeq Overview (Dark Mode)                        |
+| :------------------------------------------------: | :---------------------------------------------------------------------------: |
+| ![Compare Dark](docs/screenshots/compare-dark.png) | ![Real RefSeq Overview Dark](docs/screenshots/real-dataset-overview-dark.png) |
+
+---
+
+## Quick Start
+
+### Prerequisites
+
+- Python 3.10 or newer (tested with Python 3.10–3.14).
+- Modern web browser (Chrome, Safari, Firefox, Edge).
+- Optional: NCBI Datasets CLI and Panaroo for the real-data pipeline.
+
+### Run with Make
 
 ```sh
-make setup
-make seed-demo
-make dev
+make setup       # Check Python version
+make seed-demo   # Generate deterministic demo fixture (data/demo.json)
+make dev         # Start local server on http://127.0.0.1:8000
 ```
 
-Open <http://127.0.0.1:8000>. If that port is occupied, start with `PORT=8765 make dev`. Stop the server with Ctrl+C. Optional environment variables are listed in `.env.example`; export them in the shell before running Make targets.
-
-The workspace includes a family-class overview, searchable copy-count matrix, strain and family tables, synthetic coordinate illustrations, gene-content UPGMA clustering, randomized pangenome statistics, pairwise strain comparisons, CSV/TSV/Newick exports, methods, and source pages. The circular coordinates in the demo are illustrative and do not describe real chromosomes.
-
-## Real RefSeq workflow
-
-Install the official NCBI Datasets CLI and Panaroo using their supported distribution channels. Check resolved executable versions with `make doctor`; the acquisition manifest and analysis artifact record the versions used. NCBI Datasets currently publishes macOS universal CLI binaries and documents both CLI syntax and downloadable genome package contents. Panaroo accepts GFF-based input lists and writes a Roary-style `gene_presence_absence.csv` matrix plus other optional artifacts. See the official [NCBI install guide](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/command-line-tools/download-and-install/), [NCBI genome download reference](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/reference-docs/command-line/datasets/download/genome/), [Panaroo quickstart](https://github.com/gtonkinhill/panaroo/blob/master/docs/gettingstarted/quickstart.md), and [Panaroo output guide](https://github.com/gtonkinhill/panaroo/blob/master/docs/gettingstarted/output.md).
-
-Then run:
+If port 8000 is occupied, set a custom port:
 
 ```sh
-make ingest-real    # Discover, rank, manifest and download RefSeq assemblies
-make analyze        # Validate local FASTA/GFF3, run Panaroo, normalize its matrix
+PORT=8765 make dev
 ```
 
-`make ingest-real` selects up to 24 unique strain labels from annotated RefSeq complete/chromosome/scaffold candidates, excludes atypical and multi-isolate assemblies, flags clearly clinical/patient-associated metadata for exclusion, and ranks by assembly level, contig count and N50. Review `data/real/selection_manifest.json`: this automated convenience cohort is not a curated biological study set. The original accession versions, metadata, retrieval timestamp, CLI version, package checksum and selection/exclusion reasons are retained. Downloads are stored under `data/real/package/`.
+### Run Directly with Python
 
-`make analyze` requires the downloaded RefSeq package plus the `panaroo` executable. It validates FASTA records and CDS coordinate bounds, records and excludes any selected assembly with invalid annotations, writes a stable per-accession GFF/FASTA input list, runs strict-mode Panaroo with invalid-gene filtering, captures logs and tool versions, verifies expected output files, parses family membership and multicopy cells, and writes `data/real/analysis/pangenome.json`. Panaroo's graph and source GFFs remain in the local analysis directory. The normalized result appears in the dataset selector only after the artifact exists.
+If `make` is not available in your shell:
 
-The UI distinguishes the Jaccard/UPGMA gene-content tree from sequence phylogeny. It does not claim sequence identity, syntenic blocks, rearrangements, or a circular family coordinate axis without supporting computed data. GTDB classification and sequence-based phylogeny are not provided in this build.
+```sh
+# Generate demo data fixture
+python3 scripts/seed_demo.py
 
-## Local commands
+# Start local server
+HOST=127.0.0.1 PORT=8000 python3 services/api/app.py
+```
+
+Then open [http://127.0.0.1:8000](http://127.0.0.1:8000) (or your chosen port) in your browser.
+
+---
+
+## Local Commands
+
+| Target / Command   | Purpose                                                                     |
+| :----------------- | :-------------------------------------------------------------------------- |
+| `make setup`       | Verify Python runtime environment                                           |
+| `make dev`         | Launch local HTTP server and static web app                                 |
+| `make doctor`      | Inspect installed bioinformatics tools and storage status                   |
+| `make seed-demo`   | Generate deterministic synthetic demo fixture (`data/demo.json`)            |
+| `make test`        | Execute unit test suite across parsers, calculations, and API routes        |
+| `make lint`        | Bytecode compile verification and frontend structure check                  |
+| `make build`       | Run lint checks and verify static web assets                                |
+| `make screenshots` | Capture automated high-resolution product showcase screenshots              |
+| `make ingest-real` | Discover and download candidate RefSeq assemblies via NCBI Datasets         |
+| `make analyze`     | Validate FASTA/GFF3, run Panaroo, and produce normalized pangenome artifact |
+
+---
+
+## Real RefSeq Workflow
+
+To process and explore real biological data:
+
+1. Install [NCBI Datasets CLI](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/command-line-tools/download-and-install/) and [Panaroo](https://github.com/gtonkinhill/panaroo). Verify versions with `make doctor`.
+2. Discover and acquire candidate assemblies:
+   ```sh
+   make ingest-real
+   ```
+   This ranks complete/chromosome/scaffold RefSeq candidates for the target species, excludes atypical isolates and clinical/hospital sources, and creates `data/real/selection_manifest.json` and `data/real/package/`.
+3. Validate and cluster:
+   ```sh
+   make analyze
+   ```
+   This validates FASTA sequences and CDS coordinates against contig bounds, generates strict-mode Panaroo inputs, executes Panaroo, and compiles `data/real/analysis/pangenome.json`.
+4. Launch `make dev` and select the **Real · Lactiplantibacillus plantarum** option in the dataset selector dropdown.
+
+---
+
+## REST API Reference
+
+The local HTTP API serves the web interface and exposes the following endpoints:
+
+| Method | Endpoint                                  | Description                                          |
+| :----- | :---------------------------------------- | :--------------------------------------------------- |
+| `GET`  | `/api/health`                             | Service status and default dataset                   |
+| `GET`  | `/api/datasets`                           | List available datasets (demo and real artifacts)    |
+| `GET`  | `/api/overview?dataset=...`               | Summary metrics, family classes, and strain counts   |
+| `GET`  | `/api/matrix?dataset=...`                 | Family membership, copy counts, and prevalence       |
+| `GET`  | `/api/strains?dataset=...`                | Genome catalogue and assembly metadata               |
+| `GET`  | `/api/families?dataset=...`               | Complete gene family catalogue                       |
+| `GET`  | `/api/similarity?dataset=...`             | Pairwise binary Jaccard similarity matrix            |
+| `GET`  | `/api/tree?dataset=...`                   | UPGMA hierarchical tree and Newick string            |
+| `GET`  | `/api/statistics?dataset=...&genomes=...` | Frequency spectrum, accumulation, and decay curves   |
+| `POST` | `/api/compare`                            | Compare 2–8 selected genomes (shared, unique, union) |
+| `GET`  | `/api/export/families.tsv?dataset=...`    | Download family matrix in TSV format                 |
+| `GET`  | `/api/export/families.csv?dataset=...`    | Download family matrix in CSV format                 |
+| `GET`  | `/api/export/tree.newick?dataset=...`     | Download gene-content tree in Newick format          |
+
+### Example: Strain Comparison Request
+
+```sh
+curl -X POST http://127.0.0.1:8000/api/compare \
+  -H "Content-Type: application/json" \
+  -d '{"genome_ids": ["LP-01", "LP-02", "LP-03"], "dataset_id": "demo-lp-v1"}'
+```
+
+Response:
+
+```json
+{
+  "genomes": ["LP-01", "LP-02", "LP-03"],
+  "shared_family_count": 38,
+  "union_family_count": 62,
+  "unique_families": {
+    "LP-01": ["GF0040", "GF0055"],
+    "LP-02": ["GF0041"],
+    "LP-03": ["GF0042", "GF0058"]
+  },
+  "pairwise_similarity": { ... },
+  "metric": "Binary gene-family presence; Jaccard similarity. Copy counts are not used in distances."
+}
+```
+
+---
+
+## Methodology & Calculation Notes
+
+- **Prevalence:** $\text{Prevalence}(F) = \frac{|\{g \in G \mid g \text{ possesses } F\}|}{|G|}$, where $G$ is the cohort.
+- **Partitions:**
+  - _Strict Core:_ Present in $100\%$ of genomes ($n$ of $n$).
+  - _Soft Core:_ Present in $\ge 95\%$ but $< 100\%$ of genomes.
+  - _Shell:_ Present in $\ge 15\%$ and $< 95\%$ of genomes.
+  - _Cloud:_ Present in $\ge 2$ genomes and $< 15\%$ of genomes.
+  - _Singleton:_ Present in exactly $1$ genome.
+- **Distance Metric:** Pairwise distance is binary Jaccard distance: $D(A, B) = 1 - \frac{|A \cap B|}{|A \cup B|}$. Paralog copy counts do not alter presence/absence distances.
+- **Gene-Content Tree:** Constructed via UPGMA clustering of Jaccard distances. _Note: This represents gene-content similarity and must not be interpreted as an evolutionary sequence phylogeny._
+- **Accumulation & Decay Curves:** Computed using 100 seeded pseudo-random permutations of genome sampling order. Min/max envelopes indicate observed permutation ranges rather than parametric confidence intervals.
+
+---
+
+## Project Structure
 
 ```text
-make setup
-make dev
-make doctor
-make seed-demo
-make ingest-real
-make analyze
-make test
-make lint
-make build
+gene-content-atlas/
+├── apps/
+│   └── web/                   # Vanilla HTML5, CSS3, and JavaScript client
+│       ├── app.js             # Client state, SVG renderers, interaction handlers
+│       ├── index.html         # Accessible semantic workspace layout
+│       └── styles.css         # Modern typography, data visualization, dark mode
+├── services/
+│   └── api/                   # Standard-library Python HTTP API
+│       ├── analysis.py        # Jaccard, UPGMA, accumulation permutations
+│       ├── app.py             # HTTP request router, static handler, exports
+│       ├── ingest.py          # FASTA/GFF3 validation, Panaroo CSV parsing
+│       └── tests/             # Comprehensive unit and integration tests
+├── scripts/
+│   ├── capture_screenshots.py # Headless browser screenshot generator
+│   ├── check_frontend.py     # Structural frontend integrity validator
+│   ├── doctor.py              # Environment and toolchain diagnostics
+│   ├── ingest_real.py         # NCBI RefSeq assembly discovery and acquisition
+│   ├── run_panaroo.py         # Input validation and Panaroo runner
+│   └── seed_demo.py           # Deterministic demo fixture generator
+├── data/
+│   ├── demo.json              # Deterministic synthetic fixture (seed: 20261122)
+│   └── real/                  # Real RefSeq package, manifest, and Panaroo output
+├── docs/
+│   └── screenshots/           # High-resolution showcase screenshots
+└── Makefile                   # Unified developer task runner
 ```
 
-`make doctor` reports installed runtime and bioinformatics tool versions. Missing external executables are reported as unavailable; no fake analysis is run in their place. A failed acquisition or analysis keeps diagnostics and exits non-zero.
+---
 
-## API
+## Verification & Testing
 
-The local API serves the web app and exposes:
+Run the test suite:
 
-| Route                                     | Purpose                                                       |
-| ----------------------------------------- | ------------------------------------------------------------- |
-| `/api/health`                             | Local service status                                          |
-| `/api/datasets`                           | Demo dataset and any available real Panaroo artifact          |
-| `/api/overview?dataset=...`               | Dataset summary, family classes, strain summaries             |
-| `/api/matrix?dataset=...`                 | Family membership and exact per-genome copy counts            |
-| `/api/strains?dataset=...`                | Genome catalogue                                              |
-| `/api/families?dataset=...`               | Family catalogue                                              |
-| `/api/tree?dataset=...`                   | UPGMA tree from binary Jaccard distances                      |
-| `/api/statistics?dataset=...&genomes=...` | Family frequency, randomized accumulation/core curves         |
-| `/api/similarity?dataset=...`             | Pairwise Jaccard similarity matrix                            |
-| `POST /api/compare`                       | Shared, unique and pairwise families for 2–8 selected genomes |
-| `/api/export/families.tsv?dataset=...`    | Tab-delimited family matrix                                   |
-| `/api/export/families.csv?dataset=...`    | CSV family matrix                                             |
-| `/api/export/tree.newick?dataset=...`     | Gene-content dendrogram in Newick syntax                      |
+```sh
+# Via Make
+make test
 
-The API is intentionally small and local-only. It does not currently provide FastAPI-generated OpenAPI, pagination, PostgreSQL, authentication, or background analysis jobs.
+# Or via Python directly
+PYTHONPATH=services/api python3 -m unittest discover -s services/api/tests -v
+```
 
-## Calculation notes
+The test suite covers:
 
-- Family prevalence is distinct genomes containing the family divided by genomes in the selected set.
-- Strict core = present in every genome; soft core = present in at least 95% but not every genome; shell = at least 15% below soft-core; cloud = at least two genomes below 15%; singleton = exactly one genome. The primary visualization groups strict+soft as core and shell as accessory; cloud and singleton stay separate.
-- Pairwise similarity is Jaccard on binary family presence; copy number does not affect distance.
-- The gene-content tree is UPGMA on `1 − Jaccard similarity`. It is not a sequence-based evolutionary phylogeny.
-- Accumulation and core decay use 100 seeded random genome-order permutations. The displayed min/max is the observed range, not a confidence interval.
-- GFF3 source coordinates are normalized to zero-based, half-open intervals in the parser.
+- Deterministic synthetic fixture generation and class distributions.
+- Jaccard similarity and UPGMA clustering consistency.
+- Accumulation permutation stability and spectrum balance.
+- GFF3 coordinate bounds validation, strand parsing, and frameshift handling.
+- Panaroo Roary-style CSV matrix parsing and paralog copy counts.
+- NCBI RefSeq candidate quality ranking and clinical exclusion logic.
+- Path traversal rejection in zip package extraction.
+- HTTP API route responses, security headers, query handling, and export formats.
+- Real RefSeq/Panaroo artifact integrity verification.
 
-## Architecture and current limits
+---
 
-- `apps/web/` is the responsive JavaScript/SVG client.
-- `services/api/app.py` is the standard-library local HTTP API.
-- `services/api/analysis.py` holds pure Jaccard, UPGMA, comparison and permutation calculations.
-- `services/api/ingest.py` validates FASTA/GFF3 and parses Panaroo matrix output.
-- `scripts/ingest_real.py` uses NCBI Datasets for RefSeq discovery and acquisition.
-- `scripts/run_panaroo.py` validates downloaded inputs, runs Panaroo and writes a provenance-bearing normalized artifact.
-- `services/api/tests/` covers fixture calculations, input parsing, matrix import, selection logic, and package path safety.
+## Current Scope & Limitations
 
-The local real-data workflow was run on 24 RefSeq candidates: four assemblies with out-of-bounds GFF3 CDS coordinates were explicitly excluded, and Panaroo 1.8.1 imported 5,488 families for the remaining 20 genomes. NCBI Datasets CLI 18.41.1 produced the selection and package. The resulting matrix is available in the app and API. This convenience cohort is not a curated biological study set. Do not cite the synthetic demo as biological evidence.
+- **Single-User Workspace:** Designed for local data exploration; does not require user accounts, authentication tokens, or external databases.
+- **Synteny and Alignments:** The current release does not compute whole-genome synteny blocks or chromosomal rearrangement paths.
+- **Sequence Phylogeny:** The dendrogram visualizes gene-family sharing (UPGMA), not sequence-based phylogenetics (e.g. core-genome SNP trees).
+- **Taxonomy:** GTDB classification is not bundled; organism names reflect original RefSeq annotations.
 
-This is a local, single-user exploration build. It has no accounts, database, background jobs, upload workflow, or hosted deployment. GTDB classification, sequence-based phylogeny, synteny, rearrangement analysis, and pangenome graph visualization are unavailable. The analysis was verified locally; hosted and production behavior has not been verified.
+---
 
-Focused notes are in [`docs/`](docs/). The live source pages link to NCBI, Panaroo, and GTDB materials.
+## Contributing
+
+Contributions, bug reports, and suggestions are welcome. Please ensure that all changes include corresponding unit tests and pass `make lint` and `make test`. See [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details.
+
+---
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#f5f7f6">
+    <meta name="description" content="Explore a transparent, illustrative pangenome workspace.">
+    <title>Gene Content Atlas · Explore genomic diversity</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+
+  <body>
+    <aside class="rail">
+      <a class="brand" href="#overview" aria-label="Gene Content Atlas home"><span
+          class="brand-mark"><i></i><i></i><i></i><i></i></span><span>GCA<span class="brand-dot">.</span></span></a>
+      <div class="rail-label">WORKSPACE</div>
+      <nav aria-label="Primary navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">⌂</span>Overview</button>
+        <button class="nav-item" data-view="matrix"><span class="nav-icon">▦</span>Presence / absence</button>
+        <button class="nav-item" data-view="strains"><span class="nav-icon">◉</span>Strain explorer</button>
+        <button class="nav-item" data-view="genome"><span class="nav-icon">◎</span>Genome landscape</button>
+        <button class="nav-item" data-view="synteny"><span class="nav-icon">≋</span>Synteny explorer</button>
+        <button class="nav-item" data-view="families"><span class="nav-icon">⌘</span>Gene families</button>
+        <button class="nav-item" data-view="tree"><span class="nav-icon">⑂</span>Gene-content tree</button>
+        <button class="nav-item" data-view="statistics"><span class="nav-icon">▥</span>Statistics</button>
+        <button class="nav-item" data-view="compare"><span class="nav-icon">⇄</span>Compare strains</button>
+      </nav>
+      <div class="rail-label rail-label-lower">REFERENCE</div>
+      <nav aria-label="Reference navigation">
+        <button class="nav-item" data-view="methods"><span class="nav-icon">ⓘ</span>Methods & provenance</button>
+        <button class="nav-item" data-view="sources"><span class="nav-icon">↗</span>Data sources</button>
+      </nav>
+      <div class="rail-bottom">
+        <div class="profile">
+          <div class="avatar">G</div>
+          <div><strong>Local workspace</strong><small>Single-user demo</small></div><span class="online-dot"></span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="shell">
+      <header class="topbar">
+        <div class="crumb"><span>Atlas</span><span class="slash">/</span><strong id="crumb-current">Overview</strong>
+        </div>
+        <div class="top-actions"><select id="dataset-select" class="dataset-select" aria-label="Select dataset">
+            <option value="demo-lp-v1">Demo dataset</option>
+          </select><button class="icon-button" id="theme-toggle" aria-label="Toggle dark mode"
+            title="Toggle dark mode">◐</button><button class="avatar tiny" title="Local workspace">G</button></div>
+      </header>
+      <div class="content">
+        <section class="page-view shown" id="view-overview">
+          <div class="eyebrow"><span class="eyebrow-line"></span>COMPARATIVE GENOMICS WORKSPACE <span
+              class="version">v0.1</span></div>
+          <div class="hero-row">
+            <div>
+              <h1>See what a genome<br><em>has in common.</em></h1>
+              <p class="lede">Explore gene content across strains of a species. Move from a pangenome overview to the
+                families and genomes behind it.</p>
+            </div>
+            <div class="hero-mark">
+              <div class="halo halo-one"></div>
+              <div class="halo halo-two"></div>
+              <div class="orbit-dot"></div>
+              <div class="hero-glyph">g<span>↗</span></div><small>STRAIN<br>VARIATION</small>
+            </div>
+          </div>
+          <div class="callout"><span class="callout-icon">i</span>
+            <div><strong id="dataset-warning-title">Illustrative dataset</strong><span id="dataset-warning-body">All
+                values below come from a deterministic synthetic fixture. They do not describe real
+                <i>Lactiplantibacillus plantarum</i> isolates.</span></div><button class="text-link"
+              data-open="methods">View provenance <b>↗</b></button>
+          </div>
+          <div class="section-heading">
+            <div><span class="section-kicker">DATASET AT A GLANCE</span>
+              <h2><i>Lactiplantibacillus plantarum</i></h2>
+            </div><button class="outline-button" data-open="matrix">Explore matrix <span>↗</span></button>
+          </div>
+          <div class="metrics" id="metrics"></div>
+          <div class="overview-grid">
+            <article class="panel composition-panel">
+              <div class="panel-head">
+                <div><span class="section-kicker">FAMILY DISTRIBUTION</span>
+                  <h3>Where families are shared</h3>
+                </div><span class="subtle-tag" id="family-count-tag">80 families</span>
+              </div>
+              <div class="composition-body">
+                <div class="donut-wrap"><svg id="donut" viewBox="0 0 220 220" role="img"
+                    aria-label="Gene family class distribution"></svg>
+                  <div class="donut-center"><strong id="family-total">—</strong><span>FAMILIES</span></div>
+                </div>
+                <div class="legend" id="legend"></div>
+              </div>
+              <div class="panel-foot" id="family-distribution-note">Classification is calculated from the selected demo
+                cohort.</div>
+            </article>
+            <article class="panel landscape-panel">
+              <div class="panel-head">
+                <div><span class="section-kicker">GENOME LANDSCAPE</span>
+                  <h3>Family positions</h3>
+                </div><button class="mini-link" data-open="genome">Open explorer ↗</button>
+              </div>
+              <div class="landscape-chart" id="landscape-chart"></div>
+              <div class="axis" id="landscape-axis"><span>0
+                  Mb</span><span>1</span><span>2</span><span>3</span><span>4.45 Mb</span></div>
+              <div class="panel-foot" id="landscape-note">Synthetic coordinates for interface demonstration.</div>
+            </article>
+          </div>
+          <div class="section-heading recent-heading">
+            <div><span class="section-kicker">COHORT</span>
+              <h2>Strains in this workspace <span class="count" id="strain-count">12</span></h2>
+            </div><button class="text-link" data-open="strains">Browse strains <b>↗</b></button>
+          </div>
+          <div class="strain-strip" id="strain-strip"></div>
+        </section>
+
+        <section class="page-view" id="view-matrix">
+          <div class="eyebrow"><span class="eyebrow-line"></span>GENE FAMILY LANDSCAPE <span class="version">01 /
+              04</span></div>
+          <div class="page-title-row">
+            <div>
+              <h1>Presence <em>&amp; absence</em></h1>
+              <p class="lede">A family-by-strain view of the demo cohort. Cells encode copy number; select a family to
+                inspect its distribution.</p>
+            </div><a class="outline-button" href="/api/export/families.tsv" download>Export matrix <span>↓</span></a>
+          </div>
+          <div class="callout compact"><span class="callout-icon">i</span>
+            <div><strong id="matrix-warning-title">Synthetic values</strong><span id="matrix-warning-body">This matrix
+                is generated from a fixed seed and is not biological evidence.</span></div><button class="text-link"
+              data-open="methods">Methods <b>↗</b></button>
+          </div>
+          <div class="matrix-toolbar">
+            <div class="filter-group"><label for="class-filter">Class</label><select id="class-filter">
+                <option value="all">All families</option>
+                <option value="core">Core</option>
+                <option value="accessory">Accessory</option>
+                <option value="rare">Rare</option>
+                <option value="singleton">Singleton</option>
+              </select></div>
+            <div class="matrix-legend"><span><i class="swatch absent"></i>Absent</span><span><i
+                  class="swatch present"></i>Present</span><span><i class="swatch multicopy"></i>Multicopy</span></div>
+            <div class="search-wrap"><span>⌕</span><input id="family-search" placeholder="Find family…"
+                aria-label="Find gene family"></div>
+          </div>
+          <div class="panel matrix-panel">
+            <div class="matrix-scroll" id="matrix-wrap"></div>
+            <div class="matrix-foot"><span id="matrix-count">—</span><span>Presence is distinct from copy number</span>
+            </div>
+          </div>
+          <div class="detail-panel" id="family-detail">
+            <div class="detail-empty">Select a row to inspect its genome distribution.</div>
+          </div>
+        </section>
+
+        <section class="page-view" id="view-strains">
+          <div class="eyebrow"><span class="eyebrow-line"></span>COHORT EXPLORER <span class="version">12 GENOMES</span>
+          </div>
+          <h1>Strain <em>catalogue</em></h1>
+          <p class="lede">Compare family counts and provenance fields across the illustrative cohort.</p>
+          <div class="panel table-panel">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>STRAIN ID</th>
+                    <th>DISPLAY NAME</th>
+                    <th>SOURCE LABEL</th>
+                    <th>FAMILIES</th>
+                    <th>GENE COPIES</th>
+                    <th>GENOME LENGTH</th>
+                  </tr>
+                </thead>
+                <tbody id="strain-table"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="callout"><span class="callout-icon">i</span>
+            <div><strong>Not accession records</strong><span>Strain identifiers and source labels are synthetic
+                placeholders, not NCBI accessions or isolate metadata.</span></div><button class="text-link"
+              data-open="methods">Provenance <b>↗</b></button>
+          </div>
+        </section>
+
+        <section class="page-view" id="view-genome">
+          <div class="eyebrow"><span class="eyebrow-line"></span>COORDINATE OVERVIEW <span class="version">ILLUSTRATIVE
+              / SOURCE-BASED</span></div>
+          <h1>Genome <em>landscape</em></h1>
+          <p class="lede">Circular markers are shown only when a supported genomic coordinate axis is available.</p>
+          <div class="panel genome-panel">
+            <div class="panel-head">
+              <div><span class="section-kicker" id="genome-track-kicker">DEMO REFERENCE AXIS</span>
+                <h3>Family markers by class</h3>
+              </div>
+              <div class="matrix-legend" id="genome-legend"></div>
+            </div>
+            <div id="circular-genome"></div>
+            <div class="panel-foot" id="genome-footnote">Positions are deterministic synthetic offsets. This view cannot
+              support inference about synteny, rearrangements, or chromosome structure.</div>
+          </div>
+        </section>
+
+        <section class="page-view" id="view-families">
+          <div class="eyebrow"><span class="eyebrow-line"></span>FAMILY CATALOGUE <span class="version">80
+              FAMILIES</span></div>
+          <h1>Gene <em>families</em></h1>
+          <p class="lede">Filter the demo family catalogue and inspect prevalence, copy number, and genome membership.
+          </p>
+          <div class="matrix-toolbar">
+            <div class="filter-group"><label for="family-class-filter">Class</label><select id="family-class-filter">
+                <option value="all">All families</option>
+                <option value="core">Core</option>
+                <option value="accessory">Accessory</option>
+                <option value="rare">Rare</option>
+                <option value="singleton">Singleton</option>
+              </select></div>
+            <div class="search-wrap"><span>⌕</span><input id="catalog-search" placeholder="Search family ID…"
+                aria-label="Search family catalogue"></div>
+          </div>
+          <div class="panel table-panel">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>FAMILY</th>
+                    <th>CLASS</th>
+                    <th>GENOMES PRESENT</th>
+                    <th>PREVALENCE</th>
+                    <th>GENE COPIES</th>
+                  </tr>
+                </thead>
+                <tbody id="family-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page-view" id="view-tree">
+          <div class="eyebrow"><span class="eyebrow-line"></span>GENOME CONTENT RELATIONSHIPS <span
+              class="version">UPGMA · JACCARD</span></div>
+          <h1>Gene-content <em>clustering</em></h1>
+          <p class="lede">Hierarchical clustering of binary family-presence profiles. This is a gene-content dendrogram,
+            not a sequence-based evolutionary phylogeny.</p>
+          <div class="callout compact"><span class="callout-icon">i</span>
+            <div><strong>Interpretation</strong><span>Jaccard distance uses family presence; copy number is ignored.
+                Branch lengths show half the UPGMA merge distance, not evolutionary time.</span></div><a
+              class="text-link" href="/api/export/tree.newick" download>Export Newick ↓</a>
+          </div>
+          <div class="panel tree-panel">
+            <div class="panel-head">
+              <div><span class="section-kicker">DEMO COHORT</span>
+                <h3>Genome-content dendrogram</h3>
+              </div><button class="mini-link" id="clear-tree-selection">Clear selection</button>
+            </div>
+            <div id="tree-canvas" class="tree-canvas"></div>
+            <div class="panel-foot">Select leaves to filter the matrix and seed a strain comparison. Tree labels and
+              distances derive from the synthetic fixture.</div>
+          </div>
+          <div class="selection-bar"><span id="tree-selection-label">No strains selected</span><button
+              class="outline-button" data-open="compare">Compare selection <span>↗</span></button></div>
+        </section>
+
+        <section class="page-view" id="view-statistics">
+          <div class="eyebrow"><span class="eyebrow-line"></span>PANGENOME STATISTICS <span class="version">DEMO
+              CALCULATIONS</span></div>
+          <h1>Statistics &amp; <em>variation</em></h1>
+          <p class="lede">Family frequency, randomized accumulation, core decay, and presence-profile similarity
+            calculated from the displayed cohort.</p>
+          <div class="callout compact"><span class="callout-icon">i</span>
+            <div><strong>Randomization</strong><span>100 seeded genome-order permutations. Shaded ranges show observed
+                minimum–maximum, not confidence intervals.</span></div>
+          </div>
+          <div class="stats-grid">
+            <article class="panel stat-panel">
+              <div class="panel-head">
+                <div><span class="section-kicker">FREQUENCY SPECTRUM</span>
+                  <h3>Families by genomes present</h3>
+                </div>
+              </div>
+              <div id="frequency-chart" class="stat-chart"></div>
+              <div class="panel-foot">Counts are computed from distinct family memberships.</div>
+            </article>
+            <article class="panel stat-panel">
+              <div class="panel-head">
+                <div><span class="section-kicker">PANGENOME ACCUMULATION</span>
+                  <h3>Accumulated families</h3>
+                </div>
+              </div>
+              <div id="accumulation-chart" class="stat-chart"></div>
+              <div class="panel-foot">Mean and observed range across randomized genome orders.</div>
+            </article>
+            <article class="panel stat-panel">
+              <div class="panel-head">
+                <div><span class="section-kicker">CORE-GENOME DECAY</span>
+                  <h3>Families shared by all sampled strains</h3>
+                </div>
+              </div>
+              <div id="core-chart" class="stat-chart"></div>
+              <div class="panel-foot">Mean and observed range across randomized genome orders.</div>
+            </article>
+            <article class="panel stat-panel">
+              <div class="panel-head">
+                <div><span class="section-kicker">PAIRWISE SIMILARITY</span>
+                  <h3>Jaccard family-presence matrix</h3>
+                </div>
+              </div>
+              <div class="sim-scroll" id="similarity-heatmap"></div>
+              <div class="panel-foot">Jaccard similarity = shared families / union of families.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="page-view" id="view-compare">
+          <div class="eyebrow"><span class="eyebrow-line"></span>STRAIN COMPARISON <span class="version">2–8
+              STRAINS</span></div>
+          <h1>Compare <em>genomes</em></h1>
+          <p class="lede">Compare shared and strain-specific family membership within this demo cohort.</p>
+          <div class="panel compare-controls">
+            <div><span class="section-kicker">SELECT STRAINS</span>
+              <p>Choose two to eight strains. Tree selections are carried into this view.</p>
+            </div>
+            <div id="compare-options" class="compare-options"></div><button class="outline-button"
+              id="run-compare">Calculate comparison <span>↗</span></button>
+            <div id="compare-error" class="compare-error" role="status"></div>
+          </div>
+          <div id="comparison-results" class="comparison-results">
+            <div class="detail-empty">Select at least two strains and calculate a comparison.</div>
+          </div>
+        </section>
+
+        <section class="page-view" id="view-methods">
+          <div class="eyebrow"><span class="eyebrow-line"></span>SCIENTIFIC TRANSPARENCY <span class="version">DATA
+              NOTES</span></div>
+          <h1>Methods &amp; <em>provenance</em></h1>
+          <p class="lede">Know where each value comes from, and where this exploration build stops.</p>
+          <div class="methods-grid">
+            <article class="panel method-card"><span class="section-kicker">01 / DATASET</span>
+              <h3>Deterministic synthetic fixture</h3>
+              <p>Dataset ID <code>demo-lp-v1</code>, seed <code>20261122</code>. Strain names, family membership, copy
+                counts and coordinate offsets are generated for UI demonstration. The species label provides context
+                only; records are not real isolates.</p><span class="status-pill">No real genomic data loaded</span>
+            </article>
+            <article class="panel method-card"><span class="section-kicker">02 / CLASSIFICATION</span>
+              <h3>Family prevalence</h3>
+              <p>Prevalence is the number of distinct genomes with a family divided by the number of genomes in the
+                selected cohort. Core means present in all genomes; accessory uses a 15% frequency floor; singleton
+                means one genome.</p><span class="status-pill">Computed from fixture membership</span>
+            </article>
+            <article class="panel method-card"><span class="section-kicker">03 / NOT IMPLEMENTED</span>
+              <h3>Real analysis pipeline</h3>
+              <p>NCBI acquisition, annotation parsing, Panaroo clustering, phylogenetic inference and sequence-based
+                synteny are not available in this build. No evolutionary tree or biological relationship is claimed.</p>
+              <span class="status-pill muted">Unavailable in this build</span>
+            </article>
+            <article class="panel method-card"><span class="section-kicker">04 / REPRODUCIBILITY</span>
+              <h3>API and export</h3>
+              <p>Local JSON is generated on first start. The API exposes dataset summary, matrix and family views. TSV
+                export preserves integer copy counts with zero for absent families; prevalence is a fraction in [0, 1].
+              </p><a href="/api/health" target="_blank" class="mini-link">Check local API ↗</a>
+            </article>
+          </div>
+          <div class="panel methodology">
+            <div class="section-kicker">INTERPRETATION NOTE</div>
+            <h3>Illustrations are not observations</h3>
+            <p>The demo is useful for exploring interaction patterns and the data model. Its synthetic membership
+              patterns, coordinates and source labels must not be cited or interpreted as findings about <i>L.
+                plantarum</i>.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-synteny">
+          <div class="eyebrow"><span class="eyebrow-line"></span>GENOME ORGANIZATION <span class="version">EVIDENCE
+              REQUIRED</span></div>
+          <h1>Synteny <em>explorer</em></h1>
+          <p class="lede">Compare ordered, annotated loci only when gene-to-family assignments and contig-aware
+            coordinates are available.</p>
+          <article class="panel unavailable-panel">
+            <div class="unavailable-symbol">↔</div>
+            <div><span class="section-kicker">NO SYNTENY RESULT LOADED</span>
+              <h3 id="synteny-state-title">This dataset has no gene-order evidence</h3>
+              <p id="synteny-state-body">The demo fixture contains family membership and illustrative markers, but no
+                contigs, genes, strands, or validated alignments. It cannot support synteny blocks or rearrangement
+                calls.</p><button class="outline-button" data-open="methods">Review available evidence
+                <span>↗</span></button>
+            </div>
+          </article>
+        </section>
+
+        <section class="page-view" id="view-sources">
+          <div class="eyebrow"><span class="eyebrow-line"></span>DATA PROVENANCE <span class="version">SOURCE
+              REGISTRY</span></div>
+          <h1>Data <em>sources</em></h1>
+          <p class="lede">Distinct sources contribute assemblies, taxonomy, annotations, and analysis outputs. They are
+            not interchangeable.</p>
+          <div class="source-list">
+            <article class="panel source-entry">
+              <div><span class="section-kicker">ASSEMBLY + ANNOTATION</span>
+                <h3>NCBI RefSeq via Datasets</h3>
+                <p>Candidate assemblies, genome sequence, GFF3 annotation, protein/CDS FASTA, and assembly reports.
+                  Retrieval command records the installed CLI version and accession-level manifest.</p><a
+                  href="https://www.ncbi.nlm.nih.gov/datasets/docs/v2/" target="_blank" rel="noreferrer">Official NCBI
+                  Datasets documentation ↗</a>
+              </div><span class="status-pill" id="ncbi-source-status">Available for real-data acquisition</span>
+            </article>
+            <article class="panel source-entry">
+              <div><span class="section-kicker">PANGENOME ANALYSIS</span>
+                <h3>Panaroo</h3>
+                <p>Gene family membership, family-to-gene identifiers, pangenome graph, and optional core alignment
+                  outputs, subject to the selected command and installed release.</p><a
+                  href="https://github.com/gtonkinhill/panaroo/blob/master/docs/gettingstarted/quickstart.md"
+                  target="_blank" rel="noreferrer">Panaroo input and output guide ↗</a>
+              </div><span class="status-pill muted" id="panaroo-source-status">Executable not installed</span>
+            </article>
+            <article class="panel source-entry">
+              <div><span class="section-kicker">TAXONOMIC CROSS-CHECK</span>
+                <h3>GTDB</h3>
+                <p>No GTDB release or classification has been imported in this build. RefSeq organism labels alone are
+                  not presented as GTDB assignments.</p><a href="https://gtdb.ecogenomic.org/" target="_blank"
+                  rel="noreferrer">GTDB release and metadata portal ↗</a>
+              </div><span class="status-pill muted">Not imported</span>
+            </article>
+            <article class="panel source-entry">
+              <div><span class="section-kicker">OPTIONAL SEQUENCE SOURCE</span>
+                <h3>OpenGenome2</h3>
+                <p>No OpenGenome2 sequence source has been configured. Any future sequence-only records would remain
+                  separate from strain metadata and annotated assemblies.</p>
+              </div><span class="status-pill muted">Not configured</span>
+            </article>
+          </div>
+        </section>
+        <footer class="page-footer global-footer"><span>GENE CONTENT ATLAS <b>·</b> EXPLORATION BUILD</span><span
+            id="footer-data-note">All demo values clearly labeled synthetic</span></footer>
+      </div>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+
+</html>

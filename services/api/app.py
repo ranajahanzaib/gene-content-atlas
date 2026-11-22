@@ -96,7 +96,7 @@ def derive(d: dict) -> dict:
     genome_stats = []
     for strain in d["strains"]:
         present = [f for f in d["families"] if strain["id"] in f["members"]]
-        genes = sum(f["copies"][strain["id"]] for f in present)
+        genes = sum(f["copies"].get(strain["id"], 1) for f in present)
         genome_stats.append({**strain, "families": len(present), "genes": genes, "length": strain.get("length") or d.get("genome_length")})
     genome_length = d.get("genome_length") or max((s.get("length") or 0 for s in genome_stats), default=0)
     return {"dataset": d["dataset"], "strains": genome_stats, "families": d["families"], "counts": counts, "partitions": partitions, "genome_length": genome_length, "methods": d["methods"], "analysis": d.get("analysis")}
@@ -161,7 +161,7 @@ class Handler(BaseHTTPRequestHandler):
         elif path == "/api/statistics":
             try:
                 selected = parse_qs(parsed.query).get("genomes", [None])[0]
-                genome_ids = selected.split(",") if selected else None
+                genome_ids = [item.strip() for item in selected.split(",") if item.strip()] if selected else None
                 payload = pangenome_statistics(derive(load_data(dataset_id)), genome_ids=genome_ids)
             except KeyError:
                 self.respond(404, b'{"error":"Dataset unavailable"}', "application/json; charset=utf-8")
@@ -181,7 +181,7 @@ class Handler(BaseHTTPRequestHandler):
         elif path == "/api/export/families.csv":
             d = derive(load_data(dataset_id))
             out = io.StringIO(newline="")
-            writer = csv.writer(out)
+            writer = csv.writer(out, lineterminator="\n")
             writer.writerow(["family_id", "class", "genomes_present", "prevalence", *[s["id"] for s in d["strains"]]])
             for f in d["families"]:
                 writer.writerow([f["id"], f["group"], len(f["members"]), f"{f['prevalence']:.6f}", *[f["copies"].get(s["id"], 0) for s in d["strains"]]])
@@ -193,7 +193,18 @@ class Handler(BaseHTTPRequestHandler):
             if not target.resolve().is_relative_to(WEB.resolve()) or not target.is_file():
                 self.respond(404, b"Not found", "text/plain; charset=utf-8")
                 return
-            kind = "text/html" if target.suffix == ".html" else "text/css" if target.suffix == ".css" else "text/javascript"
+            mimes = {
+                ".html": "text/html",
+                ".css": "text/css",
+                ".js": "application/javascript",
+                ".json": "application/json",
+                ".svg": "image/svg+xml",
+                ".png": "image/png",
+                ".jpg": "image/jpeg",
+                ".jpeg": "image/jpeg",
+                ".ico": "image/x-icon",
+            }
+            kind = mimes.get(target.suffix.lower(), "application/octet-stream")
             self.respond(200, target.read_bytes(), f"{kind}; charset=utf-8")
 
     def do_POST(self) -> None:  # noqa: N802

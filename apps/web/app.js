@@ -30,6 +30,14 @@ const escapeHtml = (value) =>
         character
       ],
   );
+const getShortLabel = (strain, index) => {
+  const id = typeof strain === "string" ? strain : strain.id;
+  if (!id) return "";
+  if (id.startsWith("LP-")) return id.slice(-2);
+  const idx = index !== undefined ? index : data?.strains?.findIndex((s) => s.id === id);
+  if (idx !== undefined && idx !== -1) return String(idx + 1).padStart(2, "0");
+  return id.slice(-2);
+};
 
 async function init() {
   try {
@@ -57,6 +65,12 @@ async function init() {
     selectedGenomeIds = selectedGenomeIds.filter((id) => validIds.has(id));
     render();
     bind();
+    const initialView =
+      new URLSearchParams(location.search).get("view") ||
+      location.hash.replace(/^#/, "");
+    if (initialView && document.getElementById(`view-${initialView}`)) {
+      openView(initialView);
+    }
   } catch {
     $(".content").innerHTML =
       '<div class="error-state"><h1>Atlas could not connect</h1><p>Start the local API with <code>make dev</code>, then reload this page.</p></div>';
@@ -183,6 +197,9 @@ function drawCircular() {
     cy = 210,
     r = 124,
     rin = 89;
+  $("#genome-track-kicker").textContent = "DEMO REFERENCE AXIS";
+  $("#genome-footnote").textContent =
+    "Positions are deterministic synthetic offsets. This view cannot support inference about synteny, rearrangements, or chromosome structure.";
   let out = `<svg viewBox="0 0 420 420" role="img" aria-label="Circular illustrative family coordinate map"><circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--line-soft)" stroke-width="1"/><circle cx="${cx}" cy="${cy}" r="${rin}" fill="none" stroke="var(--line-soft)" stroke-width="1"/>`;
   for (let i = 0; i < 12; i++) {
     const a = (i * Math.PI) / 6 - Math.PI / 2;
@@ -246,7 +263,7 @@ function renderMatrix() {
   const genomes = selectedGenomeIds.length
     ? data.strains.filter((s) => selectedGenomeIds.includes(s.id))
     : data.strains;
-  const head = `<div class="matrix-row matrix-header" style="--n:${genomes.length}"><div class="matrix-sticky">FAMILY <span>↓</span></div>${genomes.map((s) => `<div class="strain-col" title="${escapeHtml(s.id)}">${escapeHtml(s.id.slice(-2))}</div>`).join("")}</div>`;
+  const head = `<div class="matrix-row matrix-header" style="--n:${genomes.length}"><div class="matrix-sticky">FAMILY <span>↓</span></div>${genomes.map((s, idx) => `<div class="strain-col" title="${escapeHtml(s.id)}">${escapeHtml(getShortLabel(s, idx))}</div>`).join("")}</div>`;
   const rows = fs
     .map(
       (f) =>
@@ -271,10 +288,20 @@ function selectFamily(id) {
   selectedFamily = id;
   const f = data.families.find((x) => x.id === id);
   if (!f) return;
+  const classFilter = $("#class-filter");
+  if (classFilter && classFilter.value !== "all" && classFilter.value !== f.group) {
+    classFilter.value = "all";
+  }
+  const searchInput = $("#family-search");
+  if (searchInput && searchInput.value && !f.id.toLowerCase().includes(searchInput.value.toLowerCase())) {
+    searchInput.value = "";
+  }
   renderMatrix();
   const present = f.members.length;
   $("#family-detail").innerHTML =
     `<div class="detail-main"><span class="section-kicker">SELECTED FAMILY</span><strong>${escapeHtml(f.id)}</strong><span class="detail-class" style="--dot:${palette[f.group]}">${labels[f.group]}</span></div><div class="detail-stat"><span>PREVALENCE</span><strong>${(100 * f.prevalence).toFixed(1)}%</strong></div><div class="detail-stat"><span>GENOMES</span><strong>${present} <small>/ ${data.strains.length}</small></strong></div><div class="detail-members"><span>MEMBERS</span><div>${f.members.map((id) => `<span>${escapeHtml(id)}</span>`).join("") || "<small>None</small>"}</div></div>`;
+  const selectedRow = document.querySelector(`.family-row[data-family="${id}"]`);
+  if (selectedRow) selectedRow.scrollIntoView({ block: "nearest" });
 }
 function renderFamilies() {
   const real = data.dataset.mode === "real";
@@ -354,6 +381,7 @@ function toggleGenome(id) {
   renderTree();
   renderCompareOptions();
   renderStatistics();
+  renderMatrix();
 }
 function syncSelection() {
   const url = new URL(location.href);
@@ -408,7 +436,7 @@ async function renderStatistics() {
   );
   const names = similarityData.genomes;
   $("#similarity-heatmap").innerHTML =
-    `<table class="similarity-table"><thead><tr><th></th>${names.map((id) => `<th>${escapeHtml(id.slice(-2))}</th>`).join("")}</tr></thead><tbody>${similarityData.matrix.map((values, i) => `<tr><th>${escapeHtml(names[i])}</th>${values.map((v, j) => `<td style="--similarity:${v}" title="${escapeHtml(names[i])} × ${escapeHtml(names[j])}: ${(v * 100).toFixed(1)}%"><span>${v.toFixed(2)}</span></td>`).join("")}</tr>`).join("")}</tbody></table>`;
+    `<table class="similarity-table"><thead><tr><th></th>${names.map((id, idx) => `<th title="${escapeHtml(id)}">${escapeHtml(getShortLabel(id, idx))}</th>`).join("")}</tr></thead><tbody>${similarityData.matrix.map((values, i) => `<tr><th>${escapeHtml(names[i])}</th>${values.map((v, j) => `<td style="--similarity:${v}" title="${escapeHtml(names[i])} × ${escapeHtml(names[j])}: ${(v * 100).toFixed(1)}%"><span>${v.toFixed(2)}</span></td>`).join("")}</tr>`).join("")}</tbody></table>`;
 }
 function drawBars(selector, values, { color, xLabel, yLabel }) {
   const width = 560,
@@ -471,6 +499,7 @@ function renderCompareOptions() {
       syncSelection();
       renderTree();
       renderStatistics();
+      renderMatrix();
     }),
   );
 }
@@ -529,6 +558,16 @@ function openView(name) {
     sources: "Data sources",
   }[name];
   $("#crumb-current").textContent = title;
+  if (location.hash !== `#${name}`) {
+    history.replaceState(null, "", `#${name}${location.search}`);
+  }
+  if (name === "compare" && selectedGenomeIds.length >= 2 && selectedGenomeIds.length <= 8) {
+    runCompare();
+  }
+  if (name === "matrix" && !selectedFamily && data?.families?.length) {
+    const fam = new URLSearchParams(location.search).get("family") || data.families[0].id;
+    selectFamily(fam);
+  }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 function updateDatasetContext() {
@@ -665,6 +704,8 @@ function bind() {
     syncSelection();
     renderTree();
     renderCompareOptions();
+    renderStatistics();
+    renderMatrix();
   });
   $("#run-compare").addEventListener("click", runCompare);
   $("#dataset-select").addEventListener("change", (event) => {
@@ -680,7 +721,21 @@ function bind() {
       document.documentElement.classList.contains("dark") ? "1" : "0",
     );
   });
-  if (localStorage.getItem("gca-dark") === "1")
+  const themeParam = new URLSearchParams(location.search).get("theme");
+  if (
+    themeParam === "dark" ||
+    (themeParam !== "light" && localStorage.getItem("gca-dark") === "1") ||
+    (themeParam !== "light" &&
+      localStorage.getItem("gca-dark") === null &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
     document.documentElement.classList.add("dark");
+  }
+  window.addEventListener("hashchange", () => {
+    const hash = location.hash.replace(/^#/, "");
+    if (hash && document.getElementById(`view-${hash}`)) {
+      openView(hash);
+    }
+  });
 }
 init();
